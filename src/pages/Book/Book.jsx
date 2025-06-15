@@ -26,6 +26,7 @@ const Book = ({ singleBook }) => {
     tags,
     yearOfPublishing,
     publisher,
+    totalPages,
   } = singleBook;
   return (
     <Link to={`/bookDetails/${bookId}`}>
@@ -55,6 +56,9 @@ const Book = ({ singleBook }) => {
               <div className="badge badge-outline">
                 {rating} <FaStarHalfAlt />
               </div>
+            </div>
+            <div>
+              <p>{totalPages}</p>
             </div>
           </div>
         </div>
