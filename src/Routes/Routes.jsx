@@ -1,5 +1,7 @@
 import React from "react";
-import { createBrowserRouter } from "react-router";
+// import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from "react-router-dom"; // ✅ correct
+// import { Route, Routes } from "react-router-dom";
 import Root from "../pages/Root/Root";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
@@ -14,8 +16,9 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("data/booksData.json"),
-        path: "/",
+        loader: () => fetch("data/booksData.json").then((res) => res.json()),
+
+        // path: "/",
         Component: Home,
       },
       {
@@ -24,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bookDetails/:id",
-        loader: () => fetch("data/booksData.json"),
+        loader: () => fetch("data/booksData.json").then((res) => res.json()),
         Component: BookDetails,
       },
     ],

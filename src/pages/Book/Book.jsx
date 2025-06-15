@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStarHalfAlt } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const Book = ({ singleBook }) => {
   //     [
@@ -36,7 +36,7 @@ const Book = ({ singleBook }) => {
           </figure>
 
           <div className="flex justify-center gap-10">
-            {tags.map((tag, index) => (
+            {tags?.map((tag, index) => (
               <button key={index} className="btn">
                 {tag}
               </button>
