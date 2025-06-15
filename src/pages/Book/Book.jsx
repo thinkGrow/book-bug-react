@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStarHalfAlt } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Book = ({ singleBook }) => {
   //     [
@@ -17,8 +18,8 @@ const Book = ({ singleBook }) => {
   //     "yearOfPublishing": 1925
   //   },
   const {
+    bookId,
     bookName,
-    author,
     image,
     rating,
     category,
@@ -27,34 +28,36 @@ const Book = ({ singleBook }) => {
     publisher,
   } = singleBook;
   return (
-    <div>
-      <div className="card bg-base-100 w-96 shadow-sm border gap-5 p-6">
-        <figure className="p-4 bg-gray-100 w-2/3 mx-auto">
-          <img src={image} className="h-[168px]" alt="Shoes" />
-        </figure>
+    <Link to={`/bookDetails/${bookId}`}>
+      <div>
+        <div className="card bg-base-100 w-96 shadow-sm border gap-5 p-6">
+          <figure className="p-4 bg-gray-100 w-2/3 mx-auto">
+            <img src={image} className="h-[168px]" alt="Shoes" />
+          </figure>
 
-        <div className="flex justify-center gap-10">
-          {tags.map((tag) => (
-            <button className="btn">{tag}</button>
-          ))}
-        </div>
-        <div className="card-body">
-          <h2 className="card-title">
-            {bookName}
-            <div className="badge badge-secondary">{yearOfPublishing}</div>
-          </h2>
-          <p>Book by: {publisher}</p>
+          <div className="flex justify-center gap-10">
+            {tags.map((tag) => (
+              <button className="btn">{tag}</button>
+            ))}
+          </div>
+          <div className="card-body">
+            <h2 className="card-title">
+              {bookName}
+              <div className="badge badge-secondary">{yearOfPublishing}</div>
+            </h2>
+            <p>Book by: {publisher}</p>
 
-          <div className="border-t-1 border-dashed"></div>
-          <div className="card-actions justify-between">
-            <div className="badge badge-outline">{category}</div>
-            <div className="badge badge-outline">
-              {rating} <FaStarHalfAlt />
+            <div className="border-t-1 border-dashed"></div>
+            <div className="card-actions justify-between">
+              <div className="badge badge-outline">{category}</div>
+              <div className="badge badge-outline">
+                {rating} <FaStarHalfAlt />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
