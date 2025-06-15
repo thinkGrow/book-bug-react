@@ -12,13 +12,11 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    errorElement: <ErrorPage></ErrorPage>,
+    // errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
-        loader: () => fetch("data/booksData.json").then((res) => res.json()),
-
-        // path: "/",
+        loader: () => fetch("/data/booksData.json").then((res) => res.json()),
         Component: Home,
       },
       {
@@ -27,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bookDetails/:id",
-        loader: () => fetch("data/booksData.json").then((res) => res.json()),
+        loader: () => fetch("/data/booksData.json").then((res) => res.json()),
         Component: BookDetails,
       },
     ],
