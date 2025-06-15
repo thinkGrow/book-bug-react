@@ -7,12 +7,13 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import BookDetails from "../components/BookDetails/BookDetails";
+import ReadList from "../pages/ReadList/ReadList";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    // errorElement: <ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -22,6 +23,11 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         Component: About,
+      },
+      {
+        path: "/readList",
+        loader: () => fetch("/data/booksData.json").then((res) => res.json()),
+        Component: ReadList,
       },
       {
         path: "/bookDetails/:id",

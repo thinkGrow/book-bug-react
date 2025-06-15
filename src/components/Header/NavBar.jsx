@@ -10,6 +10,9 @@ const NavBar = () => {
       <li className="m-2">
         <Link to="/about">About</Link>
       </li>
+      <li className="m-2">
+        <Link to="/readList">Read List</Link>
+      </li>
     </>
   );
   return (
