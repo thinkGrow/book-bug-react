@@ -1,4 +1,5 @@
 import React from "react";
+import { FaStarHalfAlt } from "react-icons/fa";
 
 const Book = ({ singleBook }) => {
   //     [
@@ -15,25 +16,41 @@ const Book = ({ singleBook }) => {
   //     "publisher": "Scribner",
   //     "yearOfPublishing": 1925
   //   },
-  const { bookName, author, image } = singleBook;
+  const {
+    bookName,
+    author,
+    image,
+    rating,
+    category,
+    tags,
+    yearOfPublishing,
+    publisher,
+  } = singleBook;
   return (
     <div>
-      <div className="card bg-base-100 w-96 shadow-sm">
-        <figure className="p-3">
-          <img src={image} className="" alt="Shoes" />
+      <div className="card bg-base-100 w-96 shadow-sm border gap-5 p-6">
+        <figure className="p-4 bg-gray-100 w-2/3 mx-auto">
+          <img src={image} className="h-[168px]" alt="Shoes" />
         </figure>
+
+        <div className="flex justify-center gap-10">
+          {tags.map((tag) => (
+            <button className="btn">{tag}</button>
+          ))}
+        </div>
         <div className="card-body">
           <h2 className="card-title">
             {bookName}
-            <div className="badge badge-secondary">NEW</div>
+            <div className="badge badge-secondary">{yearOfPublishing}</div>
           </h2>
-          <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
-          </p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
+          <p>Book by: {publisher}</p>
+
+          <div className="border-t-1 border-dashed"></div>
+          <div className="card-actions justify-between">
+            <div className="badge badge-outline">{category}</div>
+            <div className="badge badge-outline">
+              {rating} <FaStarHalfAlt />
+            </div>
           </div>
         </div>
       </div>
